@@ -2,10 +2,6 @@ from src.pips import Pips
 
 class Yatzy:
 
-    # No es necesario.
-    # Lo mantengo para no romper la interfaz
-    # publica de la clase segun los
-    # casos test originales.
     def __init__(self, *dice):
         self.dice = list(dice)
 
@@ -37,17 +33,20 @@ class Yatzy:
         THREE = Pips.THREE.value
         return dice.count(THREE) * THREE
 
-    def fours(self):
+    @staticmethod
+    def fours(*dice):
         FOUR = Pips.FOUR.value
-        return self.dice.count(FOUR) * FOUR
+        return dice.count(FOUR) * FOUR
 
-    def fives(self):
+    @staticmethod
+    def fives(*dice):
         FIVE = Pips.FIVE.value
-        return self.dice.count(FIVE) * FIVE
+        return dice.count(FIVE) * FIVE
 
-    def sixes(self):
+    @staticmethod
+    def sixes(*dice):
         SIX = Pips.SIX.value
-        return self.dice.count(SIX) * SIX
+        return dice.count(SIX) * SIX
 
     @staticmethod
     def pair(*dice):
@@ -93,7 +92,7 @@ class Yatzy:
         return cls.chance(*dice) if not Pips.minus(Pips.ONE) - set(dice) else 0
 
     @classmethod
-    def fullHouse(cls, *dice):
+    def full_house(cls, *dice):
         if cls.two_of_a_kind(*dice) and cls.three_of_a_kind(*dice):
             return cls.two_of_a_kind(*dice) + cls.three_of_a_kind(*dice)
         else:
