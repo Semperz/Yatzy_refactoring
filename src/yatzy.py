@@ -1,100 +1,62 @@
 class Yatzy:
 
     @staticmethod
-    def chance(d1, d2, d3, d4, d5):
-        total = 0
-        total += d1
-        total += d2
-        total += d3
-        total += d4
-        total += d5
+    def chance(*dices):
+        total = sum(dices)
         return total
 
     @staticmethod
-    def yatzy(dice):
-        counts = [0] * (len(dice) + 1)
-        for die in dice:
-            counts[die - 1] += 1
-        for i in range(len(counts)):
-            if counts[i] == 5:
-                return 50
-        return 0
+    def yatzy(*dices):
+        if dices.count(dices[0]) != len(dices):
+            return 0
+        else:
+            return 50
 
     @staticmethod
-    def ones(d1, d2, d3, d4, d5):
-        sum = 0
-        if (d1 == 1):
-            sum += 1
-        if (d2 == 1):
-            sum += 1
-        if (d3 == 1):
-            sum += 1
-        if (d4 == 1):
-            sum += 1
-        if (d5 == 1):
-            sum += 1
-
-        return sum
+    def ones(*dices):
+        ones_sum = 0
+        for ones in dices:
+            if ones == 1:
+                ones_sum += 1
+        return ones_sum
 
     @staticmethod
-    def twos(d1, d2, d3, d4, d5):
-        sum = 0
-        if (d1 == 2):
-            sum += 2
-        if (d2 == 2):
-            sum += 2
-        if (d3 == 2):
-            sum += 2
-        if (d4 == 2):
-            sum += 2
-        if (d5 == 2):
-            sum += 2
-        return sum
+    def twos(*dices):
+        twos_sum = 0
+        for ones in dices:
+            if ones == 1:
+                twos_sum += 1
+        return twos_sum
+    @staticmethod
+    def threes(*dices):
+        threes_sum = 0
+        for ones in dices:
+            if ones == 1:
+                threes_sum += 1
+        return threes_sum
+    @staticmethod
+    def fours(*dices):
+        fours_sum = 0
+        for ones in dices:
+            if ones == 1:
+                fours_sum += 1
+        return fours_sum
 
     @staticmethod
-    def threes(d1, d2, d3, d4, d5):
-        s = 0
-        if (d1 == 3):
-            s += 3
-        if (d2 == 3):
-            s += 3
-        if (d3 == 3):
-            s += 3
-        if (d4 == 3):
-            s += 3
-        if (d5 == 3):
-            s += 3
-        return s
+    def fives(*dices):
+        fives_sum = 0
+        for ones in dices:
+            if ones == 1:
+                fives_sum += 1
+        return fives_sum
 
-    def __init__(self, d1, d2, d3, d4, _5):
-        self.dice = [0] * 5
-        self.dice[0] = d1
-        self.dice[1] = d2
-        self.dice[2] = d3
-        self.dice[3] = d4
-        self.dice[4] = _5
-
-    def fours(self):
-        sum = 0
-        for at in range(5):
-            if (self.dice[at] == 4):
-                sum += 4
-        return sum
-
-    def fives(self):
-        s = 0
-        i = 0
-        for i in range(len(self.dice)):
-            if (self.dice[i] == 5):
-                s = s + 5
-        return s
-
-    def sixes(self):
-        sum = 0
-        for at in range(len(self.dice)):
-            if (self.dice[at] == 6):
-                sum = sum + 6
-        return sum
+    @staticmethod
+    def sixes(*dices):
+        sixes_sum = 0
+        for ones in dices:
+            if ones == 1:
+                sixes_sum += 1
+        return sixes_sum
 
     @staticmethod
     def score_pair(d1, d2, d3, d4, d5):
@@ -157,7 +119,7 @@ class Yatzy:
         return 0
 
     @staticmethod
-    def smallStraight(d1, d2, d3, d4, d5):
+    def small_straight(d1, d2, d3, d4, d5):
         tallies = [0] * 6
         tallies[d1 - 1] += 1
         tallies[d2 - 1] += 1
@@ -173,7 +135,7 @@ class Yatzy:
         return 0
 
     @staticmethod
-    def largeStraight(d1, d2, d3, d4, d5):
+    def large_straight(d1, d2, d3, d4, d5):
         tallies = [0] * 6
         tallies[d1 - 1] += 1
         tallies[d2 - 1] += 1
@@ -189,7 +151,7 @@ class Yatzy:
         return 0
 
     @staticmethod
-    def fullHouse(d1, d2, d3, d4, d5):
+    def full_house(d1, d2, d3, d4, d5):
         tallies = []
         _2 = False
         i = 0
