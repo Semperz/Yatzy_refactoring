@@ -23,54 +23,48 @@ class Yatzy:
     @staticmethod
     def twos(*dices):
         twos_sum = 0
-        for ones in dices:
-            if ones == 1:
-                twos_sum += 1
+        for twos in dices:
+            if twos == 2:
+                twos_sum += 2
         return twos_sum
     @staticmethod
     def threes(*dices):
         threes_sum = 0
-        for ones in dices:
-            if ones == 1:
-                threes_sum += 1
+        for threes in dices:
+            if threes == 3:
+                threes_sum += 3
         return threes_sum
     @staticmethod
     def fours(*dices):
         fours_sum = 0
-        for ones in dices:
-            if ones == 1:
-                fours_sum += 1
+        for fours in dices:
+            if fours == 4:
+                fours_sum += 4
         return fours_sum
 
     @staticmethod
     def fives(*dices):
         fives_sum = 0
-        for ones in dices:
-            if ones == 1:
-                fives_sum += 1
+        for fives in dices:
+            if fives == 5:
+                fives_sum += 5
         return fives_sum
 
     @staticmethod
     def sixes(*dices):
         sixes_sum = 0
-        for ones in dices:
-            if ones == 1:
-                sixes_sum += 1
+        for sixes in dices:
+            if sixes == 6:
+                sixes_sum += 6
         return sixes_sum
 
     @staticmethod
-    def score_pair(d1, d2, d3, d4, d5):
-        counts = [0] * 6
-        counts[d1 - 1] += 1
-        counts[d2 - 1] += 1
-        counts[d3 - 1] += 1
-        counts[d4 - 1] += 1
-        counts[d5 - 1] += 1
-        at = 0
-        for at in range(6):
-            if (counts[6 - at - 1] == 2):
-                return (6 - at) * 2
+    def score_pair(*dices):
+        for pairs in range(6,0,-1):
+            if dices.count(pairs) == 2:
+                return pairs * 2
         return 0
+
 
     @staticmethod
     def two_pair(d1, d2, d3, d4, d5):
