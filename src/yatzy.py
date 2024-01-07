@@ -67,22 +67,14 @@ class Yatzy:
 
 
     @staticmethod
-    def two_pair(d1, d2, d3, d4, d5):
-        counts = [0] * 6
-        counts[d1 - 1] += 1
-        counts[d2 - 1] += 1
-        counts[d3 - 1] += 1
-        counts[d4 - 1] += 1
-        counts[d5 - 1] += 1
-        n = 0
-        score = 0
-        for i in range(6):
-            if (counts[6 - i - 1] >= 2):
-                n = n + 1
-                score += (6 - i)
-
-        if (n == 2):
-            return score * 2
+    def two_pair(*dices):
+        double_pair = set()
+        for pairs in range(6, 0, -1):
+            double_pair_count = dices.count(pairs)
+            if double_pair_count >= 2:
+                double_pair.add(pairs * 2)
+        if len(double_pair) >= 2:
+            return sum(double_pair)
         else:
             return 0
 
