@@ -94,13 +94,13 @@ class Yatzy:
 
     @staticmethod
     def small_straight(*dices):
-        if dices == (1,2,3,4,5):
+        if sorted(dices) == (1,2,3,4,5):
             return 15
         return 0
 
     @staticmethod
     def large_straight(*dices):
-        if dices == (2,3,4,5,6):
+        if sorted(dices) == (2,3,4,5,6):
             return 20
         return 0
     @staticmethod
