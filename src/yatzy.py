@@ -104,7 +104,7 @@ class Yatzy:
             return 20
         return 0
     @staticmethod
-    def full_house(d1, d2, d3, d4, d5):
+    def full_house(*dices):
         tallies = []
         _2 = False
         i = 0
