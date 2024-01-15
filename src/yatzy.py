@@ -61,7 +61,7 @@ class Yatzy:
     @staticmethod
     def score_pair(*dices):
         for pairs in range(6,0,-1):
-            if dices.count(pairs) == 2:
+            if dices.count(pairs) >= 2:
                 return pairs * 2
         return 0
 
@@ -105,31 +105,20 @@ class Yatzy:
         return 0
     @staticmethod
     def full_house(*dices):
-        tallies = []
-        _2 = False
-        i = 0
-        _2_at = 0
-        _3 = False
-        _3_at = 0
-
-        tallies = [0] * 6
-        tallies[d1 - 1] += 1
-        tallies[d2 - 1] += 1
-        tallies[d3 - 1] += 1
-        tallies[d4 - 1] += 1
-        tallies[d5 - 1] += 1
-
-        for i in range(6):
-            if (tallies[i] == 2):
-                _2 = True
-                _2_at = i + 1
-
-        for i in range(6):
-            if (tallies[i] == 3):
-                _3 = True
-                _3_at = i + 1
-
-        if (_2 and _3):
-            return _2_at * 2 + _3_at * 3
-        else:
+        dictionary = {}
+        final_score = 0
+        for number in dices:
+            dictionary[number] = dices.count(number)
+        if len(dictionary) != 2:
             return 0
+        if 2 in dictionary.values() and 3 in dictionary.values():
+            lista = list(dictionary.items())
+            if lista[0][1] == 2:
+                final_score += lista[0][0] * 2
+            else:
+                final_score += lista[0][0] * 3
+            if lista[1][1] == 2:
+                final_score += lista[1][0] * 2
+            else:
+                final_score += lista[1][0] * 3
+        return final_score
