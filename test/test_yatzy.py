@@ -45,7 +45,7 @@ def test_twos():
     assert 8 == Yatzy.twos(2, 2, 1, 2, 2)
     assert 10 == Yatzy.twos(2, 2, 2, 2, 2)
 
-hola
+
 
 @pytest.mark.threes
 def test_threes():
