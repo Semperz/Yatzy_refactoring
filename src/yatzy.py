@@ -1,3 +1,4 @@
+from src.Pips import Pips
 class Yatzy:
 
     @staticmethod
@@ -23,11 +24,8 @@ class Yatzy:
         '''
         Before refactor: Code is duplicated and function takes too many parameters
         '''
-        ones_sum = 0
-        for ones in dices:
-            if ones == 1:
-                ones_sum += 1
-        return ones_sum
+        ONE = Pips.ONE.value
+        return sum([ones for ones in dices if ones == ONE])
 
     @staticmethod
     def twos(*dices):
