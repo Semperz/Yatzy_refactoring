@@ -62,11 +62,8 @@ class Yatzy:
         '''
         Before refactor: A routine uses more features of another class than of its own class
         '''
-        sixes_sum = 0
-        for sixes in dices:
-            if sixes == 6:
-                sixes_sum += 6
-        return sixes_sum
+        SIX = Pips.SIX.value
+        return sum([sixes for sixes in dices if sixes == SIX])
 
     @staticmethod
     def score_pair(*dices):
