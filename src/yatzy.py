@@ -46,11 +46,8 @@ class Yatzy:
         '''
         Before refactor: A routine uses more features of another class than of its own class
         '''
-        fours_sum = 0
-        for fours in dices:
-            if fours == 4:
-                fours_sum += 4
-        return fours_sum
+        FOUR = Pips.FOUR.value
+        return sum([fours for fours in dices if fours == FOUR])
 
     @staticmethod
     def fives(*dices):
