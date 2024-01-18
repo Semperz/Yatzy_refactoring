@@ -54,11 +54,8 @@ class Yatzy:
         '''
         Before refactor: A routine uses more features of another class than of its own class
         '''
-        fives_sum = 0
-        for fives in dices:
-            if fives == 5:
-                fives_sum += 5
-        return fives_sum
+        FIVE = Pips.FIVE.value
+        return sum([fives for fives in dices if fives == FIVE])
 
     @staticmethod
     def sixes(*dices):
