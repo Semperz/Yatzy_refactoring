@@ -32,11 +32,8 @@ class Yatzy:
         '''
         Before refactor: Code is duplicated and function takes too many parameters
         '''
-        twos_sum = 0
-        for twos in dices:
-            if twos == 2:
-                twos_sum += 2
-        return twos_sum
+        TWO = Pips.TWO.value
+        return sum([twos for twos in dices if twos == TWO])
     @staticmethod
     def threes(*dices):
         '''
