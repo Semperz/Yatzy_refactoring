@@ -1,4 +1,6 @@
 from src.Pips import Pips
+
+
 class Yatzy:
 
     @staticmethod
@@ -34,6 +36,7 @@ class Yatzy:
         '''
         TWO = Pips.TWO.value
         return sum([twos for twos in dices if twos == TWO])
+
     @staticmethod
     def threes(*dices):
         '''
@@ -41,6 +44,7 @@ class Yatzy:
         '''
         THREE = Pips.THREE.value
         return sum([threes for threes in dices if threes == THREE])
+
     @staticmethod
     def fours(*dices):
         '''
@@ -71,11 +75,11 @@ class Yatzy:
         Before refactor: A chain of routines passes tramp data
                          Code is duplicated and function takes too many parameters
         '''
-        for pairs in range(6,0,-1):
-            if dices.count(pairs) >= 2:
+        TWO = Pips.TWO.value
+        for pairs in range(6, 0, -1):
+            if dices.count(pairs) >= TWO:
                 return pairs * 2
         return 0
-
 
     @staticmethod
     def two_pair(*dices):
@@ -83,12 +87,13 @@ class Yatzy:
         Before refactor: A chain of routines passes tramp data
                          Code is duplicated and function takes too many parameters
         '''
+        TWO = Pips.TWO.value
         double_pair = set()
         for pairs in range(6, 0, -1):
             double_pair_count = dices.count(pairs)
-            if double_pair_count >= 2:
+            if double_pair_count >= TWO:
                 double_pair.add(pairs * 2)
-        if len(double_pair) >= 2:
+        if len(double_pair) >= TWO:
             return sum(double_pair)
         else:
             return 0
@@ -99,8 +104,9 @@ class Yatzy:
         Before refactor: A chain of routines passes tramp data
                          Code is duplicated and function takes too many parameters
         '''
+        FOUR = Pips.FOUR.value
         for num_fours in range(6, 0, -1):
-            if dices.count(num_fours) >= 4:
+            if dices.count(num_fours) >= FOUR:
                 return num_fours * 4
         return 0
 
@@ -110,8 +116,9 @@ class Yatzy:
         Before refactor: A chain of routines passes tramp data
                          Code is duplicated and function takes too many parameters
         '''
+        THREE = Pips.THREE.value
         for num_threes in range(6, 0, -1):
-            if dices.count(num_threes) >= 3:
+            if dices.count(num_threes) >= THREE:
                 return num_threes * 3
         return 0
 
@@ -121,7 +128,8 @@ class Yatzy:
         Before refactor: A chain of routines passes tramp data
                          Code is duplicated and function takes too many parameters
         '''
-        if tuple(sorted(dices)) == (1,2,3,4,5):
+        ONE, TWO, THREE, FOUR, FIVE, SIX = Pips.values()
+        if tuple(sorted(dices)) == (ONE, TWO, THREE, FOUR, FIVE):
             return 15
         return 0
 
@@ -131,9 +139,11 @@ class Yatzy:
         Before refactor: A chain of routines passes tramp data
                          Code is duplicated and function takes too many parameters
         '''
-        if tuple(sorted(dices)) == (2,3,4,5,6):
+        ONE, TWO, THREE, FOUR, FIVE, SIX = Pips.values()
+        if tuple(sorted(dices)) == (TWO, THREE, FOUR, FIVE, SIX):
             return 20
         return 0
+
     @staticmethod
     def full_house(*dices):
         '''
